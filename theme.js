@@ -10,18 +10,18 @@ const breakpoints = {
 
 export const theme = {
   config: {
-    initialColorMode: "light",
+    initialColorMode: "dark",
     breakpoints,
   },
-  colors:{
-    accent:{
-      100:"#F50514",
-      200:"#EE000E",
-      300:"#C30000",
-      400:"#AF0000",
-      500:"#F50514",
-      600:"#F50514"
-    }
+  colors: {
+    accent: {
+      100: "#F50514",
+      200: "#EE000E",
+      300: "#C30000",
+      400: "#AF0000",
+      500: "#F50514",
+      600: "#F50514",
+    },
   },
   fonts: {
     body: "Montserrat, sans-serif",
