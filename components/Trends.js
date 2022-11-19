@@ -28,10 +28,23 @@ const Trends = () => {
           justify={"center"}
           wrap="wrap"
         >
-          {[1, 2, 4].map((card) => {
+          {[
+            {
+              title: "First blog",
+              description: "Description of First Blog",
+            },
+            {
+              title: "Second Blog",
+              description: "Description of Second Blog",
+            },
+            {
+              title: "Thrid Blog",
+              description: "Description of Thrid Blog",
+            },
+          ].map((card) => {
             return (
               <>
-                <Card key={card} blog={{}} />
+                <Card key={card} blog={card} />
               </>
             );
           })}

@@ -1,6 +1,9 @@
+import "../../styles/globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import Navigation from "../../components/Navigation";
 import CustomTheme from "../../theme";
+
+import { MetaplexProvider } from "../providers/MetaplexProvider";
 import { useMemo, useState, useEffect } from "react";
 import {
   ConnectionProvider,
@@ -58,8 +61,12 @@ function MyApp({ Component, pageProps }) {
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
         <ChakraProvider theme={CustomTheme}>
-          <Navigation />
-          <Component {...pageProps} />
+          <WalletModalProvider>
+            <MetaplexProvider>
+              <Navigation />
+              <Component {...pageProps} />
+            </MetaplexProvider>
+          </WalletModalProvider>
         </ChakraProvider>
       </WalletProvider>
     </ConnectionProvider>

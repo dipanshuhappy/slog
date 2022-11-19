@@ -23,7 +23,10 @@ import { SiConstruct3 } from "react-icons/si";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Wrapper from "./Wrapper";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import Link from "next/link";
+import { useWallet } from "@solana/wallet-adapter-react";
+
 const DropDownMenu = ({ menuName, icon, menuItemsArray }) => {
   return (
     <Menu>
@@ -55,9 +58,13 @@ const SignUpAndLogin = () => {
 };
 const Nav = () => {
   const Links = ["Explore"];
+
   const { colorMode, toggleColorMode } = useColorMode();
   const [isUserLoggedIn, setUserLogin] = useState(false);
+  const router = useRouter();
   const toggleUserLogin = () => setUserLogin(!isUserLoggedIn);
+
+  const wallet = useWallet();
   return (
     <Box
       as="nav"
@@ -114,7 +121,20 @@ const Nav = () => {
             colorScheme="yellow"
             onClick={toggleColorMode}
           />
-          {isUserLoggedIn ? (
+          <WalletMultiButton />
+
+          {wallet.connected ? (
+            <Button
+              variant="outline"
+              onClick={() => {
+                router.push("/create");
+              }}
+            >
+              Create Blog
+            </Button>
+          ) : null}
+
+          {/* {isUserLoggedIn ? (
             <DropDownMenu
               menuName="Profile"
               menuItemsArray={["My Collections", "Wishlist", "Logout"]}
@@ -123,7 +143,8 @@ const Nav = () => {
           ) : (
             <SignUpAndLogin />
           )}
-          <IconButton rounded={"lg"} aria-label="profile" icon={<FaWallet />} />
+          <IconButton rounded={"lg"} aria-label="profile" icon={<FaWallet />} /> */}
+
           {/* <IconButton
             display={["block", "block", "none"]}
             rounded={"lg"}

@@ -11,22 +11,23 @@ import {
   WalletMultiButton,
 } from "@solana/wallet-adapter-react-ui";
 import { MetaplexProvider } from "../providers/MetaplexProvider";
+import { useMetaplex } from "../effects/useMetaplex";
+import { useWallet } from "@solana/wallet-adapter-react";
+
 const Home = () => {
   return (
-    <WalletModalProvider>
-      <MetaplexProvider>
-        <Hero />
-        <WalletMultiButton />
-        <Trends />
-        <Info />
-        {/* <TopArtists />
+    <>
+      <Hero />
+
+      <Trends />
+      <Info />
+      {/* <TopArtists />
       <Categories /> */}
-        <Footer />
-        <Head>
-          <title>Slog</title>
-        </Head>
-      </MetaplexProvider>
-    </WalletModalProvider>
+      <Footer />
+      <Head>
+        <title>Slog</title>
+      </Head>
+    </>
   );
 };
 
